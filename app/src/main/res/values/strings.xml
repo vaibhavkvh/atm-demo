@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Bank Application</string>
+    <string name="lbl_welcome_to_hello_world_bank">Welcome to \nHello World Bank</string>
+    <string name="lbl_add_initial_balance">Click to add initial Balance</string>
+    <string name="hint_enter_initial_balance">Enter Initial Balance</string>
+    <string name="btn_add_balance">Add Balance</string>
 </resources>
