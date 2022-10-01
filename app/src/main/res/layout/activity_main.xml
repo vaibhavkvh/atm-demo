@@ -58,16 +58,125 @@
             app:layout_constraintTop_toBottomOf="@id/editText" />
 
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/noteGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="textViewAvailableNotes,text2KNoteCount,text10NoteCount,text20NoteCount,text20NoteCount,text50NoteCount,text100NoteCount,text500NoteCount" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewAvailableNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/_16dp"
-
             android:fontFamily="sans-serif-condensed-medium"
+
+            android:gravity="center"
             android:text="@string/lbl_available_notes_are_below"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text2KNoteCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/lbl_add_initial_balance"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/textViewAvailableNotes" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text500NoteCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+
+            android:text="@string/lbl_add_initial_balance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text2KNoteCount" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text100NoteCount"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/lbl_add_initial_balance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text500NoteCount" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text50NoteCount"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/lbl_add_initial_balance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text100NoteCount" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text20NoteCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+
+            android:text="@string/lbl_add_initial_balance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text50NoteCount" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text10NoteCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/lbl_add_initial_balance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text20NoteCount" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextWidthdrawal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:layout_marginTop="@dimen/_16dp"
+            android:hint="@string/hint_enter_withdrawal_amount"
+            android:visibility="gone"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@id/textViewAddBalance"
+            app:layout_constraintTop_toBottomOf="@+id/text10NoteCount" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWithdrawal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/btn_withdrawal_balance"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@+id/editTextWidthdrawal"
+            app:layout_constraintStart_toStartOf="@+id/editTextWidthdrawal"
+            app:layout_constraintTop_toBottomOf="@+id/editTextWidthdrawal" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textWidthrwalNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithdrawal" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,4 +6,20 @@
     <string name="btn_add_balance">Add Balance</string>
     <string name="total_balance_is">Total Balance is %d</string>
     <string name="lbl_available_notes_are_below">Available Notes are below</string>
+    <string name="_2k_note_count">Total 2000\'s Notes available are %d</string>
+    <string name="_500_note_count">Total 500\'s Notes available are %d</string>
+    <string name="_100_note_count">Total 100\'s Notes available are %d</string>
+    <string name="_50_note_count">Total 50\'s Notes available are %d</string>
+    <string name="_20_note_count">Total 20\'s Notes available are %d</string>
+    <string name="_10_note_count">Total 10\'s Notes available are %d</string>
+    <string name="hint_enter_withdrawal_amount">Enter withdrawal amount</string>
+    <string name="btn_withdrawal_balance">Withdrawal Balance</string>
+
+
+    <string name="remain_2k_note_count">Remain 2000\'s Notes available are %d</string>
+    <string name="remain_500_note_count">Remain 500\'s Notes available are %d</string>
+    <string name="remain_100_note_count">Remain 100\'s Notes available are %d</string>
+    <string name="remain_50_note_count">Remain 50\'s Notes available are %d</string>
+    <string name="remain_20_note_count">Remain 20\'s Notes available are %d</string>
+    <string name="remain_10_note_count">Remain 10\'s Notes available are %d</string>
 </resources>
