@@ -1,6 +1,7 @@
 package com.example.mybankapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
@@ -137,80 +138,63 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun deductBalance() {
         if (activityMainBinding.editTextWidthdrawal.readText().isEmpty()) {
             showMessage("Please enter amount")
-        } else if (!activityMainBinding.editTextWidthdrawal.readText().isDigitsOnly()) {
-            showMessage("Please enter valid amount")
+        } else if (activityMainBinding.editTextWidthdrawal.readText().toInt() < 10) {
+            showMessage("Please enter minimum 10")
         } else {
             withdrawalAMount = activityMainBinding.editTextWidthdrawal.readText().toInt()
             activityMainBinding.editTextWidthdrawal.text?.clear()
             activityMainBinding.textViewAddBalance.text =
                 getString(R.string.total_balance_is, totalAvailableBalance.minus(withdrawalAMount))
+            mStringBuilder.append("--------------------------------")
             calculateNotes(withdrawalAMount)
         }
     }
 
     private fun calculateNotes(totalAvailableBalance: Int) {
-
+        Log.e("withdrawalAMount is ", totalAvailableBalance.toString())
+        if (totalAvailableBalance < 10) {
+            return
+        }
         when (totalAvailableBalance) {
-            in 0..10 -> {
+            in 10..19 -> {
                 total10NoteAvailable -= (totalAvailableBalance / 10)
+                calculateNotes(totalAvailableBalance - ((totalAvailableBalance / 10).times(10)))
                 mStringBuilder.append("10 Notes *" + totalAvailableBalance / 10)
             }
-            in 11..20 -> {
-                total10NoteAvailable -= totalAvailableBalance / 10
+            in 21..49 -> {
                 total20NoteAvailable -= totalAvailableBalance / 20
+                calculateNotes(totalAvailableBalance - ((totalAvailableBalance / 20).times(20)))
 
-                mStringBuilder.append("10 Notes *" + totalAvailableBalance / 10)
                 mStringBuilder.append("\n20 Notes *" + totalAvailableBalance / 20)
             }
-            in 21..50 -> {
-                total10NoteAvailable -= totalAvailableBalance / 10
-                total20NoteAvailable -= totalAvailableBalance / 20
+            in 50..99 -> {
+
                 total50NoteAvailable -= totalAvailableBalance / 50
+                calculateNotes(totalAvailableBalance - ((totalAvailableBalance / 50).times(50)))
 
-                mStringBuilder.append("10 Notes *" + totalAvailableBalance / 10)
-                mStringBuilder.append("\n20 Notes *" + totalAvailableBalance / 20)
                 mStringBuilder.append("\n50 Notes *" + totalAvailableBalance / 50)
 
             }
-            in 51..100 -> {
-                total10NoteAvailable -= totalAvailableBalance / 10
-                total20NoteAvailable -= totalAvailableBalance / 20
-                total50NoteAvailable -= totalAvailableBalance / 50
+            in 100..499 -> {
+
                 total100NoteAvailable -= totalAvailableBalance / 100
+                calculateNotes(totalAvailableBalance - ((totalAvailableBalance / 100).times(100)))
 
-
-                mStringBuilder.append("10 Notes *" + totalAvailableBalance / 10)
-                mStringBuilder.append("\n20 Notes *" + totalAvailableBalance / 20)
-                mStringBuilder.append("\n50 Notes *" + totalAvailableBalance / 50)
                 mStringBuilder.append("\n100 Notes *" + totalAvailableBalance / 100)
             }
-            in 101..500 -> {
-                total10NoteAvailable -= totalAvailableBalance / 10
-                total20NoteAvailable -= totalAvailableBalance / 20
-                total50NoteAvailable -= totalAvailableBalance / 50
-                total100NoteAvailable -= totalAvailableBalance / 100
+            in 500..1999 -> {
+
                 total500NoteAvailable -= totalAvailableBalance / 500
+                calculateNotes(totalAvailableBalance - ((totalAvailableBalance / 500).times(500)))
 
-                mStringBuilder.append("10 Notes *" + totalAvailableBalance / 10)
-                mStringBuilder.append("\n20 Notes *" + totalAvailableBalance / 20)
-                mStringBuilder.append("\n50 Notes *" + totalAvailableBalance / 50)
-                mStringBuilder.append("\n100 Notes *" + totalAvailableBalance / 100)
                 mStringBuilder.append("\n500 Notes *" + totalAvailableBalance / 500)
 
             }
             else -> {
-                total10NoteAvailable -= totalAvailableBalance / 10
-                total20NoteAvailable -= totalAvailableBalance / 20
-                total50NoteAvailable -= totalAvailableBalance / 50
-                total100NoteAvailable -= totalAvailableBalance / 100
-                total500NoteAvailable -= totalAvailableBalance / 500
+
                 total2kNoteAvailable -= totalAvailableBalance / 2000
+                calculateNotes(totalAvailableBalance - ((totalAvailableBalance / 2000).times(2000)))
 
-
-                mStringBuilder.append("10 Notes *" + totalAvailableBalance / 10)
-                mStringBuilder.append("\n20 Notes *" + totalAvailableBalance / 20)
-                mStringBuilder.append("\n50 Notes *" + totalAvailableBalance / 50)
-                mStringBuilder.append("\n100 Notes *" + totalAvailableBalance / 100)
                 mStringBuilder.append("\n2000 Notes *" + totalAvailableBalance / 2000)
 
 
@@ -218,6 +202,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         activityMainBinding.apply {
+
+            textWidthrwalNotes.text = mStringBuilder.toString()
             text2KNoteCount.text = getString(R.string.remain_2k_note_count, total2kNoteAvailable)
             text500NoteCount.text = getString(R.string.remain_500_note_count, total500NoteAvailable)
             text100NoteCount.text = getString(R.string.remain_100_note_count, total100NoteAvailable)
