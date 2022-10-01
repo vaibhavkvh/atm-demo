@@ -4,4 +4,6 @@
     <string name="lbl_add_initial_balance">Click to add initial Balance</string>
     <string name="hint_enter_initial_balance">Enter Initial Balance</string>
     <string name="btn_add_balance">Add Balance</string>
+    <string name="total_balance_is">Total Balance is %d</string>
+    <string name="lbl_available_notes_are_below">Available Notes are below</string>
 </resources>

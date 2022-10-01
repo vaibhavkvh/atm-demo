@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -38,18 +39,35 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="0123456789"
             android:hint="@string/hint_enter_initial_balance"
+            android:imeOptions="actionDone"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="@id/textViewAddBalance"
             app:layout_constraintTop_toBottomOf="@id/textViewAddBalance" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/btn_add_balance"
-            android:onClick=""
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="@id/editText"
             app:layout_constraintStart_toStartOf="@id/editText"
             app:layout_constraintTop_toBottomOf="@id/editText" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAvailableNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_16dp"
+
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/lbl_available_notes_are_below"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
